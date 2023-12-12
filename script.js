@@ -27,3 +27,8 @@ function closePopup() {
 function closeImagePopup() {
     document.getElementById("image-popup").style.display = "none";
 }
+
+
+function comprarauto(){
+    document.getElementById("comprar")
+}
