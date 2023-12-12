@@ -5,13 +5,7 @@ const app = express();
 const port = 3000;
 const mongoose=require('mongoose')
 
-
-
-
-const uri = 'mongodb+srv://tu_usuario:tu_contrasena@tu_cluster.mongodb.net/tu_base_de_datos';
-
-
-mongoose.connect(uri)
+mongoose.connect('mongodb+srv://tnjofre:<thiago2008>@cluster0.9h3lukx.mongodb.net/')
   .then(() => {
     console.log('Conectado a la base de datos');
   })
@@ -20,23 +14,29 @@ mongoose.connect(uri)
   });
 
 
-const practica = mongoose.model('practica', { nombre: String, edad: Number });
-
-
-app.get('/agregar-ejemplo', async (req, res) => {
-  await practica.create({ nombre: 'John Doe', edad: 30 });
-  res.send('Ejemplo agregado a la base de datos');
-});
-
+  const practicaSchema = new mongoose.Schema({
+    nombre: String,
+    edad: Number
+  });
+  
+  const Practica = mongoose.model('practica', practicaSchema);
+  
+  const nuevoEjemplo = new Practica({ nombre: 'Mateo', edad: 10 });
+await nuevoEjemplo.save();
 
 app.get('/obtener-ejemplos', async (req, res) => {
-  const ejemplos = await practica.find();
-  res.json(ejemplos);
-});
+    try {
+      const ejemplos = await Practica.find();
+      res.json(ejemplos);
+    } catch (error) {
+      res.status(500).json({ error: 'Error al obtener ejemplos' });
+    }
+  });
+  
 
 
 app.listen(port, () => {
-  console.log(`anda d10`);
+  console.log(`servidor siendo escuchado en el puerto 3000`);
 });
 
 
