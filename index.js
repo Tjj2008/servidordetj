@@ -19,10 +19,7 @@ mongoose.connect('mongodb+srv://tnjofre:<thiago2008>@cluster0.9h3lukx.mongodb.ne
     edad: Number
   });
   
-  const Practica = mongoose.model('practica', practicaSchema);
-  
-  const nuevoEjemplo = new Practica({ nombre: 'Mateo', edad: 10 });
-await nuevoEjemplo.save();
+  const Practica = mongoose.model('practica');
 
 app.get('/obtener-ejemplos', async (req, res) => {
     try {
