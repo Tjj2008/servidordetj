@@ -30,5 +30,5 @@ function closeImagePopup() {
 
 
 function comprarauto(){
-    document.getElementById("comprar")
+    document.getElementById("comprar").style.display = "none";
 }
