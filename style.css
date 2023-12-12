@@ -130,3 +130,17 @@ nav a:hover {
     
 
 }
+
+
+.boton {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+
+}
